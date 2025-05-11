@@ -7,11 +7,4 @@ print("Loading...")
 sleep(2)
 greeting()
 rules()
-numbers = list(range(1, 101))
-try:
-    for i in range(10):
-        if key() == guessing():
-            break
-        print("CONGRATS, YOU'VE WON THE GAME!!!!")
-finally:
-    pass
+guessing()

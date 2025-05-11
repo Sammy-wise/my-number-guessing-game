@@ -5,8 +5,9 @@
 
 
 
-from time import sleep
+from time import *
 import random
+import time
 
 
 
@@ -22,25 +23,30 @@ def greeting():
 
 
 
-
 def guessing():
-    key = random.randint(1, 100)
-    try:
-        for i in range(10):
-            guess = input("Enter your next number:")
-            if guess == key:
-                print("CONGRATS, YOU'VE WON THE GAME!!!!")
-            elif:
-                if guess > key:
-                    print("Sorry, your guess is too high.")
-            elif guess < key:
-                print("Sorry, your guess is too low.")
-                break
-            else:
+    key = random.randint(1, 101)  # You can remove this line in actual game
+    start_time = time.time()  # Start the timer
+
+    for i in range(10):
+        try:
+            guess = int(input("Enter your next number (1-100): "))
+            if guess < 1 or guess > 100:
+                print("Your guess is out of range. Please guess between 1 and 100.")
                 continue
-    except:
-        if guess > key:
-            print("Sorry, your guess is too high.")
+            if guess == key:
+                end_time = time.time()
+                duration = round(end_time - start_time, 2)
+                print(f"CONGRATS, YOU'RE CORRECT AND YOU'VE WON THE GAME in {duration} seconds!")
+                break
+            elif guess > key:
+                print("Sorry, your guess is too high.")
+            else:
+                print("Sorry, your guess is too low.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+    else:
+        print("Game over. You've used all 10 guesses.")
+        print(f"The correct number was {key}.")
 
 
 
@@ -56,9 +62,10 @@ def rules():
         "- The game ends if you guess right or use all 10 turns."
     )
     print(rule)
+    print("Loading...")
+    sleep(5)
 
 
 
-    return key
 
-guessing()
+
